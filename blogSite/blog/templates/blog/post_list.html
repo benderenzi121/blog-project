@@ -1,0 +1,21 @@
+{% extends 'blog/base.html'%}
+
+
+
+
+
+{% block content %}
+<div class="container post-box">
+  {% for post in post_list %}
+  <div class="post">
+    <h1><a class = " post-title-text list-title text-dark"href="{% url  'post_detail' pk=post.pk %}">{{post.title}}</a> </h1>
+    <div class="date">
+      <p class = 'list-date'>{{post.published_date|date:'D M Y'}}</p>
+    </div>
+    <a class = 'text-dark' href="{% url 'post_detail' pk=post.pk %}">Comments: {{ post.approve_comment.count }}</a>
+
+  </div>
+  {% endfor %}
+</div>
+
+{% endblock %}
